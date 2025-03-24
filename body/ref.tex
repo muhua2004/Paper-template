@@ -1,0 +1,64 @@
+\section{排版参考文献及引用}\label{sec:ref}
+
+\subsection{使用bibliography排版参考文献}
+
+编写参考文献一章是个很无聊的工作，且工作量不小。学校目前（2022年）使用的仍2005年的国标，即“GB/T 7714—2005 BibTeX Style”
+
+模板用户需要编辑bibliography.bib文件，填写参考文献的各项属性，如title、author、year等，具体请参考\url{https://github.com/CTeX-org/gbt7714-bibtex-style#%E6%96%87%E7%8C%AE%E7%B1%BB%E5%9E%8B}。OVERLEAF网站对bibtex有比较详细的解释，如果您想要了解关于bibliography文件的基本知识，请参考\url{https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex#The_bibliography_file}，其它关于bibtex的问题也可以参考该网站。其实bib文件的生成工作也可以交给zotero等文献管理软件，进一步实现参考文献管理自动化。
+
+bib文件示例：
+{
+\color{green!50!black}
+\begin{lstlisting}[breaklines=true,]
+  @online{x1,
+    title = {The Not So Short Introduction to LaTeX2e},
+    year = {2021},
+    author = {Tobias, O and Hubert, P and Irene, H and Elisabeth, S},
+    url = {http://tug.ctan.org/info/lshort/english/lshort.pdf},
+    urldate = {2021-06-05},
+    langid = {english},
+  }
+  
+  @book{x2,
+    title = {LaTeX2e 及常用宏包使用指南},
+    author = {李平},
+    date = {2004},
+    publisher = {{清华大学出版社}},
+    location = {{北京}},
+    langid = {中文;}
+  }
+\end{lstlisting}
+}
+
+示例中的x1、x2为参考文献的标识符，可以随意设定，在正文中使用\verb|\cite{x1}|命令即可实现文献交叉引用。
+
+bib 文件编辑完成后，用户需要依次进行下面四个操作：编译 latex、编译 bibtex、编译 latex、编译 latex。2022 版编者在 Visual Studio Code 中推荐设置 Recipe
+
+{
+\color{green!50!black}
+\begin{lstlisting}[breaklines=true,]
+{
+  "name": "XeLaTeX",
+  "tools": [
+    "xelatex"
+  ]
+},
+{
+  "name": "xelatex -> bibtex -> xelatex*2",
+  "tools": [
+    "xelatex",
+    "bibtex",
+    "xelatex",
+    "xelatex"
+  ]
+},
+\end{lstlisting}
+}
+
+第一项用于在没有引文变化的情况下默认编译一次 latex（耗时较短），第二项用于引文有变化的情况下使用（会比较耗时）。
+
+如果想了解原理，请参见\url{https://liam.page/2016/01/23/using-bibtex-to-generate-reference/}。
+
+若参考文献发生变更，或是编译发生错误，用户需要先清除.aux, .bbl, .blg文件后，重新执行以上操作。
+
+学校规定的参考文献排版规范有一点与国标\cite{陈浩元2015GB}不同：我校要求英文人名仅首字母大写。因此模板更新了bib样式gbt7714-2005-numerical.bst，已实现仅首字母大写、其余字母小写。并且修改了文章标题单词的大小写问题，现在不会将单词首字母改为小写。

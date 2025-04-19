@@ -151,14 +151,15 @@
 
 %%%%%%%%%% 格式命令 %%%%%%%%%%
 % 封面
-% #1: 题目
-% #2: 学生姓名
-% #3: 学号
-% #4: 学院
-% #5: 专业
-% #6: 指导老师
-% #7: 日期
-\newcommand{\cover}[7]{
+% #1: 题目第一行 (FirstLine)
+% #2: 题目第二行 (SecondLine)
+% #3: 学生姓名
+% #4: 学号
+% #5: 学院
+% #6: 专业
+% #7: 指导老师
+% #8: 日期
+\newcommand{\cover}[8]{
     \begin{titlepage}
         \begin{center}
             \vspace*{12mm}
@@ -168,74 +169,82 @@
             \heiti\zihao{-1}本科生毕业论文(设计)\\
 
             \vspace*{6mm}
-            \includegraphics[scale=1]{nuist_logo/xiaohui.jpg}
+            \includegraphics[scale=1]{nuist_logo/xiaohui.png}
 
-            \vspace*{16mm}
-            \zihao{3}{\bfseries \songti \hspace*{.3cm}题~~~~目~~~~}
-            \uline{\parbox[b]{120mm}{\center{\bfseries {#1}}}}
+            \vspace*{10mm}
+            \zihao{-3}\heiti{题~~~~~~~~目：}
+            \uline{\parbox[b]{58mm}{\center{#1}}}
             \hfill
-
-            \vspace*{24mm}
-            \zihao{-3}\songti{学生姓名}
+            
+            \vspace*{1.6mm}                   % 两行题目之间的间距
+            \zihao{-3}\heiti{\hspace{26mm}}  % 用空格对齐第二行
             \uline{\parbox[b]{58mm}{\center{#2}}}
             \hfill
 
             \vspace*{1.6mm}
-            \zihao{-3}\songti{学~~~~~~~~号}
+            \zihao{-3}\songti{学生姓名：}
             \uline{\parbox[b]{58mm}{\center{#3}}}
             \hfill
 
-            \vspace*{1.0mm}
-            \zihao{-3}\songti{学~~~~~~~~院}
+            \vspace*{1.6mm}
+            \zihao{-3}\songti{学~~~~~~~~号：}
             \uline{\parbox[b]{58mm}{\center{#4}}}
             \hfill
 
             \vspace*{1.0mm}
-            \zihao{-3}\songti{专~~~~~~~~业}
+            \zihao{-3}\songti{专~~~~~~~~业：}
             \uline{\parbox[b]{58mm}{\center{#5}}}
             \hfill
 
             \vspace*{1.0mm}
-            \zihao{-3}\songti{指导教师}
+            \zihao{-3}\songti{学~~~~~~~~院：}
             \uline{\parbox[b]{58mm}{\center{#6}}}
             \hfill
 
+            \vspace*{1.0mm}
+            \zihao{-3}\songti{指导教师：}
+            \uline{\parbox[b]{58mm}{\center{#7}}}
+            \hfill
+
             \vspace*{20mm}
-            \bfseries\zihao{-2}{#7}
+            \bfseries\zihao{-2}{#8}
         \end{center}
     \end{titlepage}
     \makestatement
 }
 
 % 声明
-\usepackage{enumerate}
 \newcommand{\makestatement}{
     \newpage
-    \vspace*{0.3cm}
     \begin{center}
-        \bf{\zihao{-1}{声\quad 明}}\\[1em]
+        \heiti\zihao{-2}\textcolor{red}{郑\quad 重\quad 声\quad 明}
     \end{center}
-    \zihao{4}{~}
 
-    \noindent\zihao{3}{本人郑重声明：}
+    \zihao{4}\kaishu
+    本人以“求实 创新”的科学精神从事科学研究工作，所呈交的论文是我个人在导师指导下进行的研究工作及取得的研究成果。本论文尽我所知，所有测试、数据和相关材料均为真实有效；文中除引文和致谢内容外，未抄袭其他人或其他机构已经发表或撰写过的研究成果。与我一同工作同志对本研究所做的贡献均已在论文中作了声明并表示谢意。
 
-    \begin{enumerate}[1、\hspace*{1em}]
-        \item 以“求实、创新”的科学精神从事科学研究工作。
-        \item 本论文中除引文外，所有测试、数据和相关材料均为真实有效的。
-        \item 本论文是我个人在指导教师的指导下进行的研究工作和取得的研究成果，请勿用于非法用途。
-        \item 本论文中除引文和致谢的内容外，并未抄袭其他人或其他机构已经发表或撰写过的研究成果。
-        \item 关于其他同志对本研究所做的贡献均已在论文中作了声明并表示了谢意。
-    \end{enumerate}
+    本人毕业论文及涉及相关资料若有不实，愿意承担一切相关的法律责任。
+    \vspace{2em}
+    
+    \begin{tabular}{ll}
+        论文作者签名：\underline{\hspace{3cm}} & 签字日期：\underline{\hspace{3cm}}
+    \end{tabular}
 
-    \vspace*{8em}
+    \vspace{8em}
+    \begin{center}
+        \heiti\zihao{-2}\textcolor{red}{论文使用授权说明}
+    \end{center}
+    \vspace{2em}
 
-    \begin{flushright}
-        \zihao{3}{作者签名：\quad \quad \quad \quad }
+    \zihao{4}\kaishu
+    本人授权南京信息工程大学可以保留并向国家有关部门或机构送交论文的复印件和电子文档；允许论文被查阅和借阅；可以将学位论文的全部或部分内容编入有关数据库进行检索；可以采用影印、缩印或扫描等复制手段保存、汇编本学位论文。不可用于任何非法用途。本文电子文档的内容和纸质论文的内容相一致。论文的公布（包括刊登）授权南京信息工程大学教务处办理。
 
-        \zihao{3}{日期：\quad 年\quad 月\quad 日}
-    \end{flushright}
+    \vspace{2em}
+    \begin{tabular}{ll}
+        论文作者签名：\underline{\hspace{3cm}} & 签字日期：\underline{\hspace{3cm}}\\[2em]
+        指导教师签名：\underline{\hspace{3cm}} & 签字日期：\underline{\hspace{3cm}}
+    \end{tabular}
 
-    \zihao{5}{~}
     \thispagestyle{empty}
     \newpage
 }
@@ -333,3 +342,9 @@
     \vspace*{0.6em}
 }
 %%%%%%%%%% WARN：弃用命令！ %%%%%%%%%%
+
+
+
+
+
+

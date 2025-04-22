@@ -1,27 +1,20 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{nuist}
-\LoadClass[a4paper,zihao=5,UTF8]{ctexart} % 基于LaTeX的标准文档类型ctexart
-
+\LoadClass[a4paper,zihao=-4,UTF8]{ctexart} % 基于LaTeX的标准文档类型ctexart
 
 \usepackage{ulem}  % 文字下划线等样式
 
 % 页边距
 \usepackage{geometry}
-\geometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm} % ,headsep=12pt,headheight=20pt,footskip=24pt
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,headheight=14pt} % ,headsep=12pt,headheight=20pt,footskip=24pt
+
 % 设定页眉为空
-\pagestyle{plain}
-
-% 设置各种字体
-%\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{SimSun} % 设置宋体
-
-%\setCJKfamilyfont{localsimsun}[AutoFakeBold,AutoFakeSlant]{SimSun}
-%\renewcommand{\songti}{\CJKfamily{localsimsun}}
-
-%\setCJKfamilyfont{localheiti}[AutoFakeBold,AutoFakeSlant]{SimHei}
-%\renewcommand{\heiti}{\CJKfamily{localheiti}}
-
-%\setCJKfamilyfont{localkaishu}[AutoFakeBold,AutoFakeSlant]{simkai}
-%\renewcommand{\kaishu}{\CJKfamily{localkaishu}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}  % 清除所有页眉页脚
+\fancyhead[C]{\zihao{5}南京信息工程大学本科毕业论文（设计）}  % 居中页眉
+\fancyfoot[C]{\thepage}  % 居中页码
+\renewcommand{\headrulewidth}{0.4pt}  % 页眉线宽度
 
 \setmainfont{Times New Roman}
 \setmonofont{Times New Roman}
@@ -35,11 +28,8 @@
 
 \renewcommand{\thefootnote}{\arabic{footnote})} % 设置脚注格式
 
-% \usepackage{setspace}
-\linespread{1.354}
-% 1.25倍行距：此处注意行距的换算
-% 1.25 ∗ 1.3 / 1.2 = 1.3541667
-% 参考 https://blog.csdn.net/weixinhum/article/details/104594454
+\usepackage{setspace} % 导入setspace包
+\setstretch{1.5}      % 设置1.5倍行距
 
 % 算法伪代码
 \usepackage{algorithm}
@@ -94,7 +84,6 @@
 % 其他不常用包
 \usepackage{xltxtra}  % 用于输出 \LaTeX 等
 \usepackage{shapepar} % 用于原作者致谢里的 \heartpar，可删除
-% \usepackage{fancyhdr}
 % \usepackage{lastpage}
 % \usepackage{layout}
 
@@ -104,13 +93,13 @@
         format    = {\zihao{4} \heiti  \raggedright}
     },
     subsection    = {
-        format    = {\zihao{5} \heiti  \raggedright}
+        format    = {\zihao{-4} \heiti  \raggedright}
     },
     subsubsection = {
-        format    = {\zihao{5} \songti \raggedright}
+        format    = {\zihao{-4} \songti \raggedright}
     },
     paragraph     = {
-        format    = {\zihao{5} \songti \raggedright},
+        format    = {\zihao{-4} \songti \raggedright},
         runin     = false,
         afterskip = {1.5ex \@plus .2ex}
     } % 修正标题不换行的设置和段后间距
@@ -135,7 +124,7 @@
 
 % 参考文献格式
 \usepackage{gbt7714}
-\renewcommand*{\bibfont}{\zihao{-5}}
+\renewcommand*{\bibfont}{\zihao{-4}}
 \bibliographystyle{gbt7714-2005-numerical}
 % 这里引用同目录下的 gbt7714-2005-numerical.bst，此文件有修改
 
@@ -166,18 +155,18 @@
             \includegraphics[scale=1]{nuist_logo/nuist.pdf}
 
             \vspace*{1cm}
-            \heiti\zihao{-1}本科生毕业论文(设计)\\
+            \heiti\zihao{1}本科生毕业论文(设计)\\
 
             \vspace*{6mm}
             \includegraphics[scale=1]{nuist_logo/xiaohui.png}
 
             \vspace*{10mm}
-            \zihao{-3}\heiti{题~~~~~~~~目：}
+            \zihao{-2}\heiti{题~~~~~~目~~~~}
             \uline{\parbox[b]{58mm}{\center{#1}}}
             \hfill
-            
-            \vspace*{1.6mm}                   % 两行题目之间的间距
-            \zihao{-3}\heiti{\hspace{26mm}}  % 用空格对齐第二行
+
+            \vspace*{1.6mm}                  % 两行题目之间的间距
+            \zihao{-2}\heiti{\hspace{26mm}}  % 用空格对齐第二行
             \uline{\parbox[b]{58mm}{\center{#2}}}
             \hfill
 
@@ -207,51 +196,22 @@
             \hfill
 
             \vspace*{20mm}
-            \bfseries\zihao{-2}{#8}
+            \songti\zihao{-3}{#8}
         \end{center}
     \end{titlepage}
     \makestatement
 }
 
 % 声明
+\usepackage{pdfpages}  % 用于插入PDF文件
 \newcommand{\makestatement}{
     \newpage
-    \begin{center}
-        \heiti\zihao{-2}\textcolor{red}{郑\quad 重\quad 声\quad 明}
-    \end{center}
-
-    \zihao{4}\kaishu
-    本人以“求实 创新”的科学精神从事科学研究工作，所呈交的论文是我个人在导师指导下进行的研究工作及取得的研究成果。本论文尽我所知，所有测试、数据和相关材料均为真实有效；文中除引文和致谢内容外，未抄袭其他人或其他机构已经发表或撰写过的研究成果。与我一同工作同志对本研究所做的贡献均已在论文中作了声明并表示谢意。
-
-    本人毕业论文及涉及相关资料若有不实，愿意承担一切相关的法律责任。
-    \vspace{2em}
-    
-    \begin{tabular}{ll}
-        论文作者签名：\underline{\hspace{3cm}} & 签字日期：\underline{\hspace{3cm}}
-    \end{tabular}
-
-    \vspace{8em}
-    \begin{center}
-        \heiti\zihao{-2}\textcolor{red}{论文使用授权说明}
-    \end{center}
-    \vspace{2em}
-
-    \zihao{4}\kaishu
-    本人授权南京信息工程大学可以保留并向国家有关部门或机构送交论文的复印件和电子文档；允许论文被查阅和借阅；可以将学位论文的全部或部分内容编入有关数据库进行检索；可以采用影印、缩印或扫描等复制手段保存、汇编本学位论文。不可用于任何非法用途。本文电子文档的内容和纸质论文的内容相一致。论文的公布（包括刊登）授权南京信息工程大学教务处办理。
-
-    \vspace{2em}
-    \begin{tabular}{ll}
-        论文作者签名：\underline{\hspace{3cm}} & 签字日期：\underline{\hspace{3cm}}\\[2em]
-        指导教师签名：\underline{\hspace{3cm}} & 签字日期：\underline{\hspace{3cm}}
-    \end{tabular}
-
-    \thispagestyle{empty}
+    \includepdf{statement.pdf}
     \newpage
 }
 
 % 目录
 \newcommand{\mytableofcontents}{
-    \pagenumbering{Roman}
     \renewcommand{\contentsname}{}
     {\zihao{3}\heiti
         \begin{center}
@@ -274,8 +234,8 @@
 
         \zihao{4} \songti #2 \vspace*{0.5em}
 
-        \zihao{-5} 南京信息工程大学#3学院，江苏\ 南京\ 210044
-        
+        \zihao{5} \songti 南京信息工程大学#3学院，江苏\ 南京\ 210044
+
         \zihao{5} ~
     \end{center}
 }
@@ -283,10 +243,10 @@
 % #1: 摘要
 % #2: 关键词
 \newcommand{\abstractofchinese}[2]{
-    \noindent \zihao{5} \heiti 摘要：\zihao{5}\kaishu{#1}
+    \noindent \zihao{-4} \heiti 摘要：\zihao{-4}\kaishu{#1}
 
-    \noindent \zihao{5} \heiti 关键词：\zihao{5}\kaishu{#2}
-    \songti \zihao{5}
+    \noindent \zihao{-4} \heiti 关键词：\zihao{-4}\kaishu{#2}
+    \songti \zihao{-4}
 }
 
 % 摘要页英文标题
@@ -302,7 +262,7 @@
 
         \zihao{4} #2 \vspace*{0.5em}
 
-        \zihao{-5} #3，NUIST，Nanjing 210044，China
+        \zihao{5} #3，NUIST，Nanjing 210044，China
 
         \zihao{5} ~
     \end{center}
@@ -311,9 +271,9 @@
 % #1: 摘要内容
 % #2: 关键词
 \newcommand{\abstractofenglish}[2]{
-    \noindent \zihao{5} \textbf{Abstract：} \zihao{5} #1
+    \noindent \zihao{-4} \textbf{Abstract：} \zihao{5} #1
 
-    \noindent \zihao{5} \textbf{Key words：} \zihao{5} #2
+    \noindent \zihao{-4} \textbf{Key words：} \zihao{5} #2
     \newpage
 }
 
@@ -323,13 +283,25 @@
     \clearpage
 
     \begin{center}
-        \zihao{4} \heiti 致谢
+        \zihao{4} \heiti 致\hspace{3em}谢
     \end{center}
     \phantomsection
     \addcontentsline{toc}{section}{致谢}
 
-    \vspace{1.6em} \par
-    \zihao{5}\kaishu #1
+    \vspace{7.875pt} \par    % （空1行，五号）
+    \zihao{-4}\kaishu #1
+}
+
+% 附录
+\newcommand{\append}[1]{
+    \clearpage
+
+    \begin{center}
+        \zihao{4} \heiti 附\hspace{3em}录
+    \end{center}
+    \phantomsection
+    \vspace{7.875pt} \par    % （空1行，五号）
+    \zihao{-4}\kaishu #1
 }
 %%%%%%%%%% 格式命令 %%%%%%%%%%
 
@@ -342,6 +314,11 @@
     \vspace*{0.6em}
 }
 %%%%%%%%%% WARN：弃用命令！ %%%%%%%%%%
+
+
+
+
+
 
 
 

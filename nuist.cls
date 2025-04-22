@@ -203,10 +203,41 @@
 }
 
 % 声明
-\usepackage{pdfpages}  % 用于插入PDF文件
 \newcommand{\makestatement}{
     \newpage
-    \includepdf{statement.pdf}
+    \thispagestyle{empty}
+    
+    % 郑重声明部分
+    \begin{center}
+        \heiti\zihao{-2}\textcolor{red}{郑\quad 重\quad 声\quad 明}
+   \end{center}
+   \vspace{1em}
+   \zihao{-4}\kaishu
+
+    本人以“求实~创新”的科学精神从事科学研究工作，所呈交的论文是我个人在导师指导下进行的研究工作及取得的研究成果。本论文尽我所知，所有测试、数据和相关材料均真实有效；文中除引文和致谢内容外，未抄袭其他人或其他机构已经发表或撰写过的研究成果。与我一同工作同志对本研究所做的贡献均已在论文中作了声明并表示谢意。
+
+    本人毕业论文及涉及相关资料若有不实，愿意承担一切相关的法律责任。
+    \vspace{1em}
+    
+    论文作者签名：\underline{\hspace{3cm}}  \hspace{6em}签字日期：\underline{\hspace{3cm}}
+
+    \vspace{8em}
+    \begin{center}
+         \heiti\zihao{-2}\textcolor{red}{论文使用授权说明}
+    \end{center}
+    \vspace{1em}
+
+    \zihao{-4}\kaishu
+
+    本人授权南京信息工程大学可以保留并向国家有关部门或机构送交论文和电子文档；允许论文被查阅和借阅；可以将学位论文的全部或部分内容编入有关数据库进行检索；可以采用影印、缩印或扫描等复制手段保存、汇编本学位论文。不可用于任何非法用途。论文的公布（包括刊登）授权南京信息工程大学办理。
+    
+    \vspace{3em}
+    
+    \zihao{-4}\songti 论文作者签名：\underline{\hspace{3cm}}  \hspace{6em}签字日期：\underline{\hspace{3cm}}
+    \vspace{1em}
+    
+    \zihao{-4}\songti 指导教师签名：\underline{\hspace{3cm}}  \hspace{6em}签字日期：\underline{\hspace{3cm}}
+
     \newpage
 }
 
@@ -314,6 +345,7 @@
     \vspace*{0.6em}
 }
 %%%%%%%%%% WARN：弃用命令！ %%%%%%%%%%
+
 
 
 
